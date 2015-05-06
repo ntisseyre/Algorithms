@@ -1,4 +1,5 @@
-﻿using Algorithms.Strings;
+﻿using Algorithms.Arrays;
+using Algorithms.Strings;
 
 namespace Algorithms
 {
@@ -6,7 +7,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new IsPalindromic();
+            var algorithm = new IntersectTwoSortedArrays();
 
             algorithm.ReadInput();
             algorithm.Execute();
