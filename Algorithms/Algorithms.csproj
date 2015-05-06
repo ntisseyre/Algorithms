@@ -63,6 +63,7 @@
     <Compile Include="Strings\ReplaceARemoveB.cs" />
     <Compile Include="Trees\Domain\TreeNode.cs" />
     <Compile Include="Trees\IsBalanced.cs" />
+    <Compile Include="Trees\IsBst.cs" />
     <Compile Include="Trees\MaxHeight.cs" />
     <Compile Include="Trees\NotKBalancedNode.cs" />
   </ItemGroup>

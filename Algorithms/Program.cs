@@ -1,5 +1,6 @@
 ﻿using Algorithms.Arrays;
 using Algorithms.Strings;
+using Algorithms.Trees;
 
 namespace Algorithms
 {
@@ -7,7 +8,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new IntersectTwoSortedArrays();
+            var algorithm = new IsBst();
 
             algorithm.ReadInput();
             algorithm.Execute();
