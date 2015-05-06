@@ -1,5 +1,4 @@
-﻿using Algorithms.Core;
-using Algorithms.Heaps.Domain;
+﻿using Algorithms.Heaps.Domain;
 using System;
 using System.Collections.Generic;
 

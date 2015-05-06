@@ -1,5 +1,4 @@
-﻿using Algorithms.Core;
-using System;
+﻿using System;
 
 namespace Algorithms.Lists.Domain
 {

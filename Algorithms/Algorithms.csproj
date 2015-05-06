@@ -44,8 +44,8 @@
   <ItemGroup>
     <Compile Include="Arrays\RemoveDuplicatesInSorted.cs" />
     <Compile Include="Arrays\RemoveElements.cs" />
-    <Compile Include="Core\IAlgorithm.cs" />
-    <Compile Include="Core\IOHelper.cs" />
+    <Compile Include="IAlgorithm.cs" />
+    <Compile Include="IOHelper.cs" />
     <Compile Include="Heaps\Domain\Heap.cs" />
     <Compile Include="Heaps\Domain\MaxHeap.cs" />
     <Compile Include="Heaps\Domain\MinHeap.cs" />

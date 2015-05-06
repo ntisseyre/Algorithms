@@ -1,5 +1,4 @@
-﻿using Algorithms.Core;
-using Algorithms.Trees.Domain;
+﻿using Algorithms.Trees.Domain;
 using System;
 
 namespace Algorithms.Trees

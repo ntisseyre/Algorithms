@@ -1,5 +1,5 @@
 ﻿
-namespace Algorithms.Core
+namespace Algorithms
 {
     public interface IAlgorithm
     {

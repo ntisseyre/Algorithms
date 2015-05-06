@@ -2,7 +2,7 @@
 using System.Collections;
 using System.ComponentModel;
 
-namespace Algorithms.Core
+namespace Algorithms
 {
     public static class IOHelper
     {
