@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0BF0AFD3-2184-4B8D-9E2B-0D537AF45CF9}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Algorithms</RootNamespace>
     <AssemblyName>Algorithms</AssemblyName>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -39,8 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAlgorithm.cs" />
-    <Compile Include="IOHelper.cs" />
+    <Compile Include="Arrays\RemoveDuplicatesInSorted.cs" />
+    <Compile Include="Arrays\RemoveElements.cs" />
+    <Compile Include="Core\IAlgorithm.cs" />
+    <Compile Include="Core\IOHelper.cs" />
+    <Compile Include="Heaps\Domain\Heap.cs" />
+    <Compile Include="Heaps\Domain\MaxHeap.cs" />
+    <Compile Include="Heaps\Domain\MinHeap.cs" />
+    <Compile Include="Heaps\MergeSortedArrays.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
