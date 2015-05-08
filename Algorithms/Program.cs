@@ -1,6 +1,5 @@
 ﻿using Algorithms.Arrays;
-using Algorithms.Strings;
-using Algorithms.Trees;
+using Algorithms.Sortings;
 
 namespace Algorithms
 {
@@ -8,7 +7,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new IsBst();
+            var algorithm = new MaxProductOfSubArray();
 
             algorithm.ReadInput();
             algorithm.Execute();
