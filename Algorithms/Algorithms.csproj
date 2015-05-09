@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arrays\IntersectTwoSortedArrays.cs" />
+    <Compile Include="Arrays\LongestIncreasingSubArray.cs" />
     <Compile Include="Arrays\MaxProductOfSubArray.cs" />
     <Compile Include="Arrays\RemoveDuplicatesInSorted.cs" />
     <Compile Include="Arrays\RemoveElements.cs" />
