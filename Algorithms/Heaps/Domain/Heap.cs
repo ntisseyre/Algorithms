@@ -46,6 +46,16 @@ namespace Algorithms.Heaps.Domain
             return result;
         }
 
+        public TValue PeekAndReplace(TValue newValue)
+        {
+            var result = this.items[0];
+
+            this.items[0] = newValue;
+            this.Heapify(0);
+
+            return result;
+        }
+
         public void Insert(TValue item)
         {
             int index = this.items.Count;

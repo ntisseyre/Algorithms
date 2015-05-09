@@ -1,4 +1,5 @@
 ﻿using Algorithms.Arrays;
+using Algorithms.Heaps;
 using Algorithms.Sortings;
 
 namespace Algorithms
@@ -7,7 +8,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new MaxProductOfSubArray();
+            var algorithm = new MergeSortedArrays();
 
             algorithm.ReadInput();
             algorithm.Execute();

@@ -12,6 +12,7 @@ namespace Algorithms.Heaps
         {
             var result = Algorithm(this.arrays);
             IOHelper.PrintArray(result);
+            Console.WriteLine();
         }
 
         public void ReadInput()
@@ -49,14 +50,20 @@ namespace Algorithms.Heaps
             //  k - the number of arrays
             while (!minHeap.IsEmpty())
             {
-                var item = minHeap.Extract();
+                var item = minHeap.Peek(); // O(1)
                 result.Add(item.Value);
 
                 var arrayCurrentIndex = arraysCurrentIndexes[item.ArrayNum];
                 if (arrayCurrentIndex < arrays[item.ArrayNum].Count)
                 {
-                    minHeap.Insert(new ItemValueAndIndex { Value = arrays[item.ArrayNum][arrayCurrentIndex], ArrayNum = item.ArrayNum });
+                    // O(logK)
+                    minHeap.PeekAndReplace(new ItemValueAndIndex { Value = arrays[item.ArrayNum][arrayCurrentIndex], ArrayNum = item.ArrayNum });
                     arraysCurrentIndexes[item.ArrayNum]++;
+                }
+                else
+                {
+                    // O(logK)
+                    minHeap.Extract(); //remove from heap
                 }
             }
 
