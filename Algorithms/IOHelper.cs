@@ -6,12 +6,13 @@ namespace Algorithms
 {
     public static class IOHelper
     {
-        public static ConsoleColor InputColor = ConsoleColor.Green;
-        public static ConsoleColor ResultColor = ConsoleColor.Yellow;
+        public static ConsoleColor ColorInput = ConsoleColor.Green;
+        public static ConsoleColor ColorResult = ConsoleColor.Yellow;
+        public static ConsoleColor ColorError = ConsoleColor.Red;
 
         public static char[] ReadString()
         {
-            Console.ForegroundColor = IOHelper.InputColor;
+            Console.ForegroundColor = IOHelper.ColorInput;
             Console.WriteLine("Enter a string:");
 
             Console.ForegroundColor = ConsoleColor.White;
@@ -20,7 +21,7 @@ namespace Algorithms
 
         public static TValue[] ReadArray<TValue>()
         {
-            Console.ForegroundColor = IOHelper.InputColor;
+            Console.ForegroundColor = IOHelper.ColorInput;
             Console.WriteLine("Enter elements:");
 
             Console.ForegroundColor = ConsoleColor.White;

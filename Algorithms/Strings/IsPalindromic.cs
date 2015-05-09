@@ -10,7 +10,7 @@ namespace Algorithms.Strings
         {
             bool result = Algorithm(this.items);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine(result);
         }
 

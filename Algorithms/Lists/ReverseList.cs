@@ -11,7 +11,7 @@ namespace Algorithms.Lists
         {
             var head = Algorithm(this.list);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine("Reversed:");
             Console.WriteLine();
             OneWayList<int>.Print(head);

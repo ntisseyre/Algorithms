@@ -17,7 +17,7 @@ namespace Algorithms.Heaps
 
         public void ReadInput()
         {
-            Console.ForegroundColor = IOHelper.InputColor;
+            Console.ForegroundColor = IOHelper.ColorInput;
             Console.WriteLine("Enter the number of arrays to merge:");
             var count = Int32.Parse(Console.ReadLine());
 
@@ -48,7 +48,7 @@ namespace Algorithms.Heaps
             // O(n log k): where
             //  n - the total number of elements in each "to be merged array"
             //  k - the number of arrays
-            while (!minHeap.IsEmpty())
+            while (!minHeap.IsEmpty)
             {
                 var item = minHeap.Peek(); // O(1)
                 result.Add(item.Value);

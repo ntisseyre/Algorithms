@@ -11,7 +11,7 @@ namespace Algorithms.Trees
         {
             int maxHeight = Algorithm(this.root);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine(string.Format("Max height: {0}", maxHeight));
         }
 

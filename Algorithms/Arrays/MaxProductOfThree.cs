@@ -15,7 +15,7 @@ namespace Algorithms.Arrays
         {
             var result = Algorithm(this.items);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine(string.Format("Max product: {0}", result));
             Console.WriteLine();
         }

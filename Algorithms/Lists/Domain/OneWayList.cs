@@ -37,7 +37,7 @@ namespace Algorithms.Lists.Domain
 
         public static void Print(OneWayList<TData> head)
         {
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
 
             while (head != null)
             {

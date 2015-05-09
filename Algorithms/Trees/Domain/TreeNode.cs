@@ -20,7 +20,7 @@ namespace Algorithms.Trees.Domain
             if (root == null)
                 return;
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
 
             Queue<TreeNode<TData>> queue = new Queue<TreeNode<TData>>();
             queue.Enqueue(root);
@@ -54,7 +54,7 @@ namespace Algorithms.Trees.Domain
         {
             TreeNode<TData> root = null;
 
-            Console.ForegroundColor = IOHelper.InputColor;
+            Console.ForegroundColor = IOHelper.ColorInput;
 
             string input;
             Queue<TreeNode<TData>> queue = new Queue<TreeNode<TData>>();

@@ -11,7 +11,7 @@ namespace Algorithms.Searching
         {
             var result = Algorithm(this.items, this.searchMe);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine(string.Format("Index: {0}", result));
         }
 

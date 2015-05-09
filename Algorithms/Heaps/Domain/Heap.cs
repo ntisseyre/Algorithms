@@ -18,9 +18,9 @@ namespace Algorithms.Heaps.Domain
             return this.items[0];
         }
 
-        public bool IsEmpty()
+        public bool IsEmpty
         {
-            return this.items.Count == 0;
+            get { return this.items.Count == 0; }
         }
 
         public void ReadFromInput()

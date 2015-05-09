@@ -12,7 +12,7 @@ namespace Algorithms.Arrays
             int newSize = Algorithm(this.items);
 
             //Print result
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
 
             Console.WriteLine(string.Format("new size: {0}", newSize));
             IOHelper.PrintArray(this.items);

@@ -17,7 +17,7 @@ namespace Algorithms.Trees
         {
             var result = Algorithm(this.root);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine(string.Format("Is BST? {0}", result));
         }
 

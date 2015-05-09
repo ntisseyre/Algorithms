@@ -12,7 +12,7 @@ namespace Algorithms.Trees
         {
             var node = Algorithm(this.root, this.k);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine(string.Format("Not K balanced: {0}", node.Data));
         }
 

@@ -8,7 +8,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new MergeSortedArrays();
+            var algorithm = new KIncreaseDecreaseArray();
 
             algorithm.ReadInput();
             algorithm.Execute();

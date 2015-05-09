@@ -13,7 +13,7 @@ namespace Algorithms.Trees
         {
             bool isBalanced = Algorithm(this.root);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine(string.Format("Is balanced: {0}", isBalanced));
         }
 

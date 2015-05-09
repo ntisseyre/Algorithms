@@ -19,7 +19,7 @@ namespace Algorithms.Arrays
             var result = Algorithm(this.firstItems, this.secondItems);
 
             Console.WriteLine();
-            Console.ForegroundColor = IOHelper.InputColor;
+            Console.ForegroundColor = IOHelper.ColorInput;
             Console.WriteLine("Intersection result:");
             IOHelper.PrintArray(result);
             Console.WriteLine();

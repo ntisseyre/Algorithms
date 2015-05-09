@@ -46,6 +46,7 @@
     <Compile Include="Arrays\MaxProductOfSubArray.cs" />
     <Compile Include="Arrays\RemoveDuplicatesInSorted.cs" />
     <Compile Include="Arrays\RemoveElements.cs" />
+    <Compile Include="Heaps\KIncreaseDecreaseArray.cs" />
     <Compile Include="IAlgorithm.cs" />
     <Compile Include="IOHelper.cs" />
     <Compile Include="Heaps\Domain\Heap.cs" />

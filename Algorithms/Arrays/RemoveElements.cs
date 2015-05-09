@@ -11,7 +11,7 @@ namespace Algorithms.Arrays
         {
             this.items = IOHelper.ReadArray<int>(); 
             
-            Console.ForegroundColor = IOHelper.InputColor;
+            Console.ForegroundColor = IOHelper.ColorInput;
             Console.WriteLine("Enter an element to remove from an array:");
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -26,7 +26,7 @@ namespace Algorithms.Arrays
             int newSize = Algorithm(this.removeMe, this.items);
 
             //Print result
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
 
             Console.WriteLine(string.Format("new size: {0}", newSize));
             IOHelper.PrintArray(this.items);

@@ -20,7 +20,7 @@ namespace Algorithms.Lists
         {
             var result = Algorithm(this.first, this.second);
 
-            Console.ForegroundColor = IOHelper.ResultColor;
+            Console.ForegroundColor = IOHelper.ColorResult;
             Console.WriteLine("Merged result:");
             
             OneWayList<int>.Print(result);
