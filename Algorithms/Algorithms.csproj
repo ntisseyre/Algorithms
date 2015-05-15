@@ -68,6 +68,7 @@
     <Compile Include="Strings\ReplaceARemoveB.cs" />
     <Compile Include="Trees\Domain\GraphNode.cs" />
     <Compile Include="Trees\Domain\TreeNode.cs" />
+    <Compile Include="Trees\FindLcaForBst.cs" />
     <Compile Include="Trees\IfRouteExistsInGraph.cs" />
     <Compile Include="Trees\IsBalanced.cs" />
     <Compile Include="Trees\IsBst.cs" />
