@@ -8,7 +8,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new NextPermutation();
+            var algorithm = new MergeSort();
 
             algorithm.ReadInput();
             algorithm.Execute();

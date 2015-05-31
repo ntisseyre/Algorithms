@@ -64,6 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Searching\BinarySearch.cs" />
     <Compile Include="Arrays\MaxProductOfThree.cs" />
+    <Compile Include="Sortings\MergeSort.cs" />
+    <Compile Include="Sortings\QuickSort.cs" />
     <Compile Include="Sortings\SelectionSort.cs" />
     <Compile Include="Strings\IsPalindromic.cs" />
     <Compile Include="Strings\ReplaceARemoveB.cs" />
