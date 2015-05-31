@@ -8,7 +8,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new LongestIncreasingSubArray();
+            var algorithm = new NextPermutation();
 
             algorithm.ReadInput();
             algorithm.Execute();
