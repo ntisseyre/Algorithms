@@ -1,6 +1,7 @@
 ﻿using Algorithms.Arrays;
 using Algorithms.Heaps;
 using Algorithms.Sortings;
+using Algorithms.Trees;
 
 namespace Algorithms
 {
@@ -8,7 +9,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var algorithm = new MergeSort();
+            var algorithm = new FindPathBetweenNodes();
 
             algorithm.ReadInput();
             algorithm.Execute();
