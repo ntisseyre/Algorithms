@@ -1,6 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/nzelenskaya/Documents/Play/algorithms/src/main/scala/com/supperslonic/algos/dynamic/NumberWithoutConsecutiveOnes.scala:13:12: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
-[0m[[0m[31merror[0m] [0m[0m required: Int[0m
-[0m[[0m[31merror[0m] [0m[0m    for (i <- 1 until total) {[0m
-[0m[[0m[31merror[0m] [0m[0m           ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
