@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/nzelenskaya/Documents/Play/algorithms/src/test/scala/com/supperslonic/algos/search/SkyLineSpec.scala:43:7: ')' expected but 'val' found.[0m
+[0m[[0m[31merror[0m] [0m[0m      val skyLine = new SkyLine()[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
