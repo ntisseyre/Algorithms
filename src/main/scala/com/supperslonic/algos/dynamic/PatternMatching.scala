@@ -34,7 +34,7 @@ class PatternMatching {
           //tabulation(i - 1)(j) - means zero occurrence of a character
           tabulation(i)(j) = tabulation(i)(j - 1) || tabulation(i - 1)(j)
         } else {
-          false
+          tabulation(i)(j) = false
         }
       }
 

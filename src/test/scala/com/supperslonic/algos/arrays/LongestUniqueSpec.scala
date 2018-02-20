@@ -3,7 +3,7 @@ package com.supperslonic.algos.arrays
 import org.scalatest.{FunSpec, Matchers}
 
 class LongestUniqueSpec extends FunSpec with Matchers {
-  describe("Longest Increasing") {
+  describe("Longest Unique") {
     it("Single element") {
       val elems = Seq(2)
       val unique = new LongestUnique()

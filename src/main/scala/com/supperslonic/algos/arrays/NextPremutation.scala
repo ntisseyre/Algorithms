@@ -17,12 +17,13 @@ class NextPremutation {
 
         println(s"premutation($i) >  premutation(${i - 1}) => ${premutation(i)} > ${premutation(i - 1)}")
         val minimum = findMinimum(premutation, i - 1)
-        swap(premutation, i - 1, minimum.get)
+        swap(premutation, i - 1, minimum)
         println(s"After minimum swap: $premutation")
 
         //we don't need to sort, because if we are here, means all numbers from right to left are elems(i) < elems(i - 1)
         //and the swap was just with the minimum which is greater than our i - 1, so just reverse an order
-        val middle = i + ((endIndex - i) >> 1)
+        val middle = i + 1 + ((endIndex - i - 1) >> 1)
+        println(s"Middle index $middle")
         for (j <- i until middle)
           swap(premutation, i, endIndex - j + i)
 
@@ -39,17 +40,17 @@ class NextPremutation {
     elems(index2) = tmp
   }
 
-  private def findMinimum(premutation: mutable.Seq[Int], endIndex: Int): Option[Int] = {
+  private def findMinimum(premutation: mutable.Seq[Int], endIndex: Int): Int = {
+    var currentMinimum: Option[Int] = None
 
-    var minimum: Option[Int] = None
     for (i <- premutation.size - 1 until endIndex by -1) {
-      if (premutation(i) > premutation(endIndex)) {
-        minimum match {
-          case None => minimum = Some(i)
-          case Some(min) => if (premutation(i) < premutation(min)) minimum = Some(i)
+      if (premutation(i) >= premutation(endIndex)) {
+        currentMinimum match {
+          case None => currentMinimum = Some(i)
+          case Some(index) => if (premutation(i) < premutation(index)) currentMinimum = Some(i)
         }
       }
     }
-    minimum
+    currentMinimum.get
   }
 }

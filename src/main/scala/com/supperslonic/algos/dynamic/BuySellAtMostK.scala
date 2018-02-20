@@ -19,15 +19,15 @@ class BuySellAtMostK {
     *
     */
   def maxProfit(stockPrices: Seq[Int], k: Int): Int = {
-    val tabulation = Array.ofDim[Int](k + 1, stockPrices.size + 1)
+    val profit = Array.ofDim[Int](k + 1, stockPrices.size + 1)
 
     // For day 0, you can't earn money
     // irrespective of how many times you trade
-    for (i <- 0 to k) tabulation(i)(0) = 0
+    for (i <- 0 to k) profit(i)(0) = 0
 
     // profit is 0 if we don't do any transation
     // (i.e. k =0)
-    for (j <- 0 to stockPrices.size) tabulation.head(j) = 0
+    for (j <- 0 to stockPrices.size) profit.head(j) = 0
 
     // fill the table in bottom-up fashion
     for (i <- 1 to k) {
@@ -35,13 +35,13 @@ class BuySellAtMostK {
       var prevDiff = Int.MinValue
       for (j <- 1 until stockPrices.size) {
 
-        prevDiff = Math.max(prevDiff, tabulation(i - 1)(j - 1) - stockPrices(j - 1))
-        tabulation(i)(j) = Math.max(tabulation(i)(j - 1), stockPrices(j) + prevDiff)
-        printTable(tabulation)
+        prevDiff = Math.max(prevDiff, profit(i - 1)(j - 1) - stockPrices(j - 1))
+        profit(i)(j) = Math.max(profit(i)(j - 1), stockPrices(j) + prevDiff)
+        printTable(profit)
       }
     }
 
-    tabulation.last(stockPrices.size - 1)
+    profit.last(stockPrices.size - 1)
   }
 
   private def printTable(tabulation: Array[Array[Int]]): Unit = {
