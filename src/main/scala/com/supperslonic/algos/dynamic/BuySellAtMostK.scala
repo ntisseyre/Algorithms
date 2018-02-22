@@ -34,7 +34,6 @@ class BuySellAtMostK {
 
       var prevDiff = Int.MinValue
       for (j <- 1 until stockPrices.size) {
-
         prevDiff = Math.max(prevDiff, profit(i - 1)(j - 1) - stockPrices(j - 1))
         profit(i)(j) = Math.max(profit(i)(j - 1), stockPrices(j) + prevDiff)
         printTable(profit)
