@@ -2,29 +2,54 @@ package com.supperslonic.algos.search
 
 import scala.collection.mutable
 
+case class NextWord(value: String, depth: Int = 0, parent: Option[NextWord] = None)
+
 class WordLadder {
   def findLadders(beginWord: String, endWord: String, wordList: List[String]): List[List[String]] = {
 
-    findNext(beginWord, endWord, wordList).map(list => beginWord :: list).toList
-  }
+    var parent: Option[NextWord] = None
+    val usedWords = mutable.Set[String]()
 
-  def findNext(beginWord: String,
-               endWord: String,
-               wordList: List[String]): mutable.Set[List[String]] = {
+    val nextWords = mutable.Queue[NextWord]()
+    nextWords.enqueue(NextWord(beginWord))
 
-    val nextWords = mutable.Set[String]()
-    wordList.foreach(word => if(isNextWord(beginWord, word)) nextWords.add(word))
-    val wordListCut = wordList.filterNot(w => w == beginWord || nextWords.contains(w))
+    var min = Int.MaxValue
+    val words = mutable.ArrayBuffer[NextWord]()
 
-    nextWords.flatMap(word => {
-        //println(s"findNext for $word")
-        if (word == endWord) {
-          Set(List(word))
-        } else {
-          val results = findNext(word, endWord, wordListCut)
-          results.map(list => word :: list)
-        }
-      })
+    while (nextWords.nonEmpty) {
+
+      val currentWord = nextWords.dequeue()
+
+       if (parent.isEmpty || parent != currentWord.parent) {
+         usedWords.add(currentWord.value)
+         parent = Some(currentWord)
+       }
+
+      wordList
+        .filterNot(word => usedWords.contains(word))
+        .filter(word => isNextWord(currentWord.value, word))
+        .map(word => NextWord(word, currentWord.depth + 1, Some(currentWord)))
+        .foreach(word => {
+          if (word.value == endWord && min >= word.depth) {
+            if (min > word.depth) words.clear()
+            words.append(word)
+            min = word.depth
+          } else {
+            nextWords.enqueue(word)
+          }
+        })
+    }
+
+    words.map(word => {
+
+      var tmp:Option[NextWord] = Some(word)
+      var result: List[String] = Nil
+      while(tmp.isDefined) {
+        result = tmp.get.value :: result
+        tmp = tmp.get.parent
+      }
+      result
+    }).toList
   }
 
   def isNextWord(word: String, nextWord: String): Boolean = {
