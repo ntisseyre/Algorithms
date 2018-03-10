@@ -3,7 +3,9 @@ package com.supperslonic.algos.machinelearning
 import scala.util.Random
 
 case class Point(x: Double, y: Double)
-case class Data(point: Point, var clusterIndex: Int = 0)
+case class Data(point: Point, var clusterIndex: Int = 0){
+  override def equals(obj: scala.Any): Boolean = point.eq(obj.asInstanceOf[Data].point)
+}
 
 class KMeans {
   def findClusters(k: Int, data: Seq[Data], maxIterations: Int): Seq[Data] = {

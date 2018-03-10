@@ -5,59 +5,35 @@ import scala.collection.mutable
 class WordLadder {
   def findLadders(beginWord: String, endWord: String, wordList: List[String]): List[List[String]] = {
 
-    findNext(beginWord, endWord, mutable.Set[String](), wordList).map(list => beginWord :: list)
+    findNext(beginWord, endWord, wordList).map(list => beginWord :: list).toList
   }
 
   def findNext(beginWord: String,
                endWord: String,
-               usedWords: mutable.Set[String],
-               wordList: List[String]): List[List[String]] = {
+               wordList: List[String]): mutable.Set[List[String]] = {
 
-    usedWords.add(beginWord)
-    val nextWords = wordList.filter(word => !usedWords.contains(word) && isNextWord(beginWord, word))
+    val nextWords = mutable.Set[String]()
+    wordList.foreach(word => if(isNextWord(beginWord, word)) nextWords.add(word))
+    val wordListCut = wordList.filterNot(w => w == beginWord || nextWords.contains(w))
 
-    //println(s"nextWords = $nextWords")
-    nextWords.foreach(word => usedWords.add(word))
-
-    nextWords
-      .flatMap(word => {
+    nextWords.flatMap(word => {
         //println(s"findNext for $word")
         if (word == endWord) {
-          List(List(word))
+          Set(List(word))
         } else {
-          val results = findNext(word, endWord, usedWords.clone(), wordList)
+          val results = findNext(word, endWord, wordListCut)
           results.map(list => word :: list)
         }
       })
   }
 
-  def isNextWord(word: String, nextWord: String): Boolean = editLength(word, nextWord) == 1
-
-  def editLength(word: String, nextWord: String): Int = {
-    val editOperations = new Array[Int](word.length)
-
-    for (j <- 0 until word.length) {
-      editOperations(j) = j + 1
-    }
-
-    //println(editOperations.toSeq)
-
-    for (i <- 0 until nextWord.length) {
-      var replace = i
-      for (j <- 0 until word.length) {
-        val insert = editOperations(j)
-        if (nextWord(i) == word(j)) {
-          editOperations(j) = replace
-        } else {
-          val delete = if (j == 0) i + 1 else editOperations(j - 1)
-          editOperations(j) = Math.min(insert, Math.min(replace, delete)) + 1
-        }
-        replace = insert
+  def isNextWord(word: String, nextWord: String): Boolean = {
+    var count = 0
+    for(i <- 0 until word.length) {
+      if(word(i) != nextWord(i)) {
+        if(count == 1) return false else count = 1
       }
-
-     //println(editOperations.toSeq)
     }
-
-    editOperations.last
+    count == 1
   }
 }

@@ -33,9 +33,14 @@ class KMeansSpec extends FunSpec with Matchers {
 
       val clusters = result.groupBy(item => item.clusterIndex)
       clusters.keys.size shouldBe 3
+      println(clusters)
 
       clusters.values.foreach(cluster => {
-        println(cluster)
+
+        val expectedCluster = if(cluster1.contains(cluster.head)) cluster1
+        else if(cluster2.contains(cluster.head)) cluster2 else cluster3
+        cluster.size shouldBe expectedCluster.size
+        expectedCluster.foreach(expected => cluster.contains(expected) shouldBe true)
       })
     }
   }
