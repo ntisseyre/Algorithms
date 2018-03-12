@@ -43,8 +43,8 @@ class WordLadderSpec extends FunSpec with Matchers {
       val ladder = new WordLadder()
       ladder.findLadders(beginWord, endWord, wordList) shouldBe Seq(
         Seq("red","ted","tex","tax"),
-        Seq("red","ted","tad","tax"),
-        Seq("red","rex","tex","tax"))
+        Seq("red","rex","tex","tax"),
+        Seq("red","ted","tad","tax"))
     }
     it("nanny -> aloud") {
       val beginWord = "nanny"

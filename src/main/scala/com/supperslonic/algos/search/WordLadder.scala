@@ -2,7 +2,9 @@ package com.supperslonic.algos.search
 
 import scala.collection.mutable
 
-case class NextWord(value: String, count: Int = 0, parent: Option[NextWord] = None)
+case class NextWord(value: String,
+                    count: Int = 0,
+                    parents: mutable.ArrayBuffer[NextWord] = new mutable.ArrayBuffer[NextWord]())
 
 class WordLadder {
   def findLadders(beginWord: String, endWord: String, wordList: List[String]): List[List[String]] = {
@@ -11,59 +13,78 @@ class WordLadder {
 
     val nextWords = mutable.Queue[NextWord]()
     nextWords.enqueue(NextWord(beginWord))
+    val processed = mutable.Map[String, NextWord]()
 
     var min = Int.MaxValue
-    val words = mutable.ArrayBuffer[NextWord]()
 
     while (nextWords.nonEmpty) {
 
       val currentWord = nextWords.dequeue()
-      searchIn.remove(currentWord.value)
-      if(currentWord.parent.isDefined && removeList.contains(currentWord.parent.get)){
-        removeList(currentWord.parent.get).foreach(tmp => searchIn.remove(tmp))
-        removeList.remove(currentWord.parent.get)
-      }
+      searchIn.remove(currentWord.value) //???
+
+      //Remove siblings from search
+      currentWord.parents.foreach(parent => {
+        if (removeList.contains(parent)) {
+          removeList(parent).foreach(tmp => searchIn.remove(tmp))
+          removeList.remove(parent)
+        }
+      })
 
       if (currentWord.count < min) {
 
-
         searchIn
-          //.filter(word => isNextWord(currentWord.value, word))
-          //.map(word => NextWord(word, currentWord.count + 1, Some(currentWord)))
           .foreach(word => {
-          if (isNextWord(currentWord.value, word)) {
+            if (isNextWord(currentWord.value, word)) {
 
-            val nextWord = NextWord(word, currentWord.count + 1, Some(currentWord))
+              val count = currentWord.count + 1
+              var enqueue = false
 
-            if (nextWord.value == endWord) {
-              if (min > nextWord.count) words.clear()
-              words.append(nextWord)
-              min = nextWord.count
-            } else {
-              nextWords.enqueue(nextWord)
-              removeList.get(currentWord) match {
+              processed.get(word) match {
                 case None =>
-                  val tmp = new mutable.ArrayBuffer[String]()
-                  tmp.append(nextWord.value)
-                  removeList.put(currentWord, tmp)
-                case Some(tmp) => tmp.append(nextWord.value)
+                  val nextWord = NextWord(word, count)
+                  nextWord.parents.append(currentWord)
+                  processed.put(word, nextWord)
+                  enqueue = true
+
+                case Some(processedWord) =>
+                  //Don't add word to the processing queue if it is already there
+                  if(processedWord.parents.head.count == currentWord.count) {
+                    processedWord.parents.append(currentWord)
+                  } else if(processedWord.parents.head.count > currentWord.count) {
+                    processedWord.parents.clear()
+                    processedWord.parents.append(currentWord)
+                  }
+              }
+
+              if (word == endWord) {
+                min = count
+              } else {
+
+                if (enqueue) nextWords.enqueue(processed(word))
+
+                removeList.get(currentWord) match {
+                  case None =>
+                    val tmp = new mutable.ArrayBuffer[String]()
+                    tmp.append(word)
+                    removeList.put(currentWord, tmp)
+                  case Some(tmp) => tmp.append(word)
+                }
               }
             }
-          }
-        })
+          })
       }
     }
 
-    words.map(word => {
-
-      var tmp: Option[NextWord] = Some(word)
-      val result = Array.ofDim[String](word.count + 1)
-      while (tmp.isDefined) {
-        result(tmp.get.count) = tmp.get.value
-        tmp = tmp.get.parent
-      }
-      result.to[List]
-    }).toList
+    /*println(words.size)
+    println(processed.size)
+    processed.keys.foreach(key => {
+      println(key + " " + processed(key).parents.map(p => p.value))
+    })
+    println("=========")*/
+    processed.get(endWord) match {
+      case None => List()
+      case Some(result) => walkResult(result).map(list => list.reverse)
+    }
   }
 
   def isNextWord(word: String, nextWord: String): Boolean = {
@@ -74,5 +95,13 @@ class WordLadder {
       }
     }
     count == 1
+  }
+
+  def walkResult(nextWord: NextWord): List[List[String]] = {
+    if (nextWord.parents.isEmpty) {
+      List(List(nextWord.value))
+    } else {
+      nextWord.parents.flatMap(parent => walkResult(parent).map(list => nextWord.value :: list)).toList
+    }
   }
 }
