@@ -20,7 +20,6 @@ class WordLadder {
     while (nextWords.nonEmpty) {
 
       val currentWord = nextWords.dequeue()
-      searchIn.remove(currentWord.value) //???
 
       //Remove siblings from search
       currentWord.parents.foreach(parent => {
