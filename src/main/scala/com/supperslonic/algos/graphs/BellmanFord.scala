@@ -28,6 +28,7 @@ class BellmanFord {
 
       println(s"from ${vertex.name} we go to ${edge.toVertex.name} by $distance ")
       if (shortestPath.contains(edge.toVertex.name)) {
+
         val currentShortestPath = shortestPath(edge.toVertex.name)
         if (currentShortestPath.distance > distance) {
           shortestPath.put(edge.toVertex.name, shortestPathToNext)

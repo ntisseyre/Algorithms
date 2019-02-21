@@ -27,8 +27,6 @@ class EggDropping {
           min =  Math.min(min, max)
         }
 
-        println(s"prevMin=$prevMin, cycleMax=$max, cycleMin=$min")
-
         attempts(i)(j) = 1 + min
         printAttempts(attempts)
       }

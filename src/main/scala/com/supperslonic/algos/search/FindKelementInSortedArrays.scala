@@ -10,6 +10,7 @@ class FindKelementInSortedArrays {
     while (left < right) {
       val partition1 = left + ((right - left) >> 1)
       val partition2 = Math.max(0, k - partition1)
+      println(s"Left: $left, right: $right, partition1: $partition1, partition2: $partition2")
 
       val maxLeft1 = if (partition1 == 0) Int.MinValue else elems1(partition1 - 1)
       val minRight1 = if (partition1 >= elems1.size) Int.MaxValue else elems1(partition1)

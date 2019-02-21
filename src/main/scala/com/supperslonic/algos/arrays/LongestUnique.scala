@@ -15,6 +15,7 @@ class LongestUnique {
     for (i <- elems.indices) {
       if (uniqueIndex.contains(elems(i))) {
 
+        println(uniqueIndex(elems(i)))
         println(s"currentMax=$currentMax, currentStartIndex=$currentStartIndex")
         if (max < currentMax) {
           max = currentMax

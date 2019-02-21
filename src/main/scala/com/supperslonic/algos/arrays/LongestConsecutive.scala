@@ -25,6 +25,7 @@ class LongestConsecutive {
     for (i <- elems.indices) {
       // if current element is the starting
       // element of a sequence
+
       if (!nextElement.contains(elems(i) - 1)) {
         // Then check for next elements in the
         // sequence
@@ -33,6 +34,7 @@ class LongestConsecutive {
 
         // update  optimal length if this length
         // is more
+        //println(elems(i) + " " + j + " " +(j - elems(i)))
         if (max < j - elems(i))
           max = j - elems(i)
       }
