@@ -2,11 +2,6 @@ package com.supperslonic.algos.strings
 
 class KmpSearch {
 
-  def search(str: String, subStr: String): Int = {
-
-    0
-  }
-
   /**
     * The length of longest proper prefix-suffix (or len) is always between 0 to n-1.
     * If len is n-1, then all characters in string are same. For example len is 3 for “AAAA”.
