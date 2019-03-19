@@ -24,8 +24,17 @@ class WaterBucketsSpec extends FunSpec with Matchers {
 
       result shouldBe true
     }
+    it("2, 4, 5") {
 
-    it("5, 1") {
+      val buckets = Seq(Bucket(10, 10), Bucket(10, 10), Bucket(5), Bucket(4))
+      val finalState = Seq(2, 4, 5)
+
+      val algorithm = new WaterBuckets()
+      val result = algorithm.canPour(buckets, finalState)
+
+      result shouldBe true
+    }
+    it("5, 1, 3") {
 
       val buckets = Seq(Bucket(10, 10), Bucket(10, 10), Bucket(5), Bucket(4))
       val finalState = Seq(5, 1, 3)

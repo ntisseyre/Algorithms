@@ -9,7 +9,7 @@ case class ShortestPath(vertex: Vertex, distance: Int) extends Comparable[Shorte
 case class Edge(distance: Int, toVertex: Vertex) {
   var visited: Boolean = false
 }
-case class Vertex(name: String) {
+case class Vertex(name: String, data: Any = null) {
   private val children = mutable.ArrayBuffer[Edge]()
 
   def addChild(edge: Edge): Unit = {
