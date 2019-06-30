@@ -2,7 +2,7 @@ package com.supperslonic.algos.trees
 
 import scala.collection.mutable
 
-case class Node(weight: Int = 0, var left: Option[Node] = None, var right: Option[Node] = None) {
+case class Node[Data](data: Data, var left: Option[Node[Data]] = None, var right: Option[Node[Data]] = None) {
   def isLeaf: Boolean = left.isEmpty && right.isEmpty
   def hasLeft: Boolean = left.isDefined
   def hasRight: Boolean = right.isDefined
@@ -13,7 +13,7 @@ case class Node(weight: Int = 0, var left: Option[Node] = None, var right: Optio
   * (b) Preorder (Root, Left, Right) : 1 2 4 5 3
   * (c) Postorder (Left, Right, Root) : 4 5 2 3 1
   */
-class Tree(val root: Option[Node]) {
+class Tree[Data](val root: Option[Node[Data]]) {
 
   def isBalanced: Boolean = {
     val height = isBalanced(root, 0)
@@ -40,7 +40,7 @@ class Tree(val root: Option[Node]) {
     stringBuilder.mkString
   }
 
-  private def size(node: Option[Node], count: Int): Int = {
+  private def size(node: Option[Node[Data]], count: Int): Int = {
     if (node.isDefined) {
       val leftCount = size(node.get.left, count)
       val rightCount = size(node.get.right, count)
@@ -51,7 +51,7 @@ class Tree(val root: Option[Node]) {
     }
   }
 
-  private def printLeftTopDown(node: Option[Node], isBoundary: Boolean, stringBuilder: mutable.StringBuilder): Unit = {
+  private def printLeftTopDown(node: Option[Node[Data]], isBoundary: Boolean, stringBuilder: mutable.StringBuilder): Unit = {
     if (node.isDefined) {
       if (isBoundary || node.get.isLeaf) stringBuilder.append(formatNode(node.get))
       printLeftTopDown(node.get.left, isBoundary, stringBuilder)
@@ -59,7 +59,7 @@ class Tree(val root: Option[Node]) {
     }
   }
 
-  private def printRightBottomUp(node: Option[Node], isBoundary: Boolean, stringBuilder: mutable.StringBuilder): Unit = {
+  private def printRightBottomUp(node: Option[Node[Data]], isBoundary: Boolean, stringBuilder: mutable.StringBuilder): Unit = {
     if (node.isDefined) {
       printRightBottomUp(node.get.left, isBoundary && node.get.right.isEmpty, stringBuilder)
       printRightBottomUp(node.get.right, isBoundary, stringBuilder)
@@ -67,7 +67,7 @@ class Tree(val root: Option[Node]) {
     }
   }
 
-  private def isBalanced(node: Option[Node], count: Int): Int = {
+  private def isBalanced(node: Option[Node[Data]], count: Int): Int = {
     if (node.isDefined) {
       val leftCount = isBalanced(node.get.left, count)
       if (leftCount == -1) return -1
@@ -79,23 +79,12 @@ class Tree(val root: Option[Node]) {
     }
   }
 
-  def sumsUpTo(sum: Int): Boolean = {
-    sumsUpTo(root, sum, 0)
-  }
-  def sumsUpTo(node: Option[Node], sum: Int, current: Int): Boolean = {
-    if (node.isDefined) {
-      if (sumsUpTo(node.get.left, sum, current + node.get.weight)) return true
-      if (sumsUpTo(node.get.right, sum, current + node.get.weight)) return true
-      false
-    } else current == sum
-  }
-
   def preOrder(): Unit = {
     preOrder(root)
     println()
   }
 
-  def preOrder(node: Option[Node]): Unit = {
+  def preOrder(node: Option[Node[Data]]): Unit = {
     if (node.isDefined) {
       print(formatNode(node.get))
       preOrder(node.get.left)
@@ -107,7 +96,7 @@ class Tree(val root: Option[Node]) {
     inOrder(root)
     println()
   }
-  def inOrder(node: Option[Node]): Unit = {
+  def inOrder(node: Option[Node[Data]]): Unit = {
     if (node.isDefined) {
       inOrder(node.get.left)
       print(formatNode(node.get))
@@ -119,7 +108,7 @@ class Tree(val root: Option[Node]) {
     postOrder(root)
     println()
   }
-  def postOrder(node: Option[Node]): Unit = {
+  def postOrder(node: Option[Node[Data]]): Unit = {
     if (node.isDefined) {
       postOrder(node.get.left)
       postOrder(node.get.right)
@@ -127,13 +116,24 @@ class Tree(val root: Option[Node]) {
     }
   }
 
-  private def formatNode(node: Node): String = node.weight + ", "
+  private def formatNode(node: Node[Data]): String = node.data + ", "
 }
 
-object Tree {
-  def apply(weights: Seq[Int]): Tree = new Tree(balancedTree(weights, 0))
+object TreeInt {
+  def apply(weights: Seq[Int]): Tree[Int] = new Tree[Int](balancedTree(weights, 0))
 
-  private def balancedTree(weights: Seq[Int], index: Int): Option[Node] = {
+  def sumsUpTo(sum: Int, root: Option[Node[Int]]): Boolean = {
+    sumsUpTo(root, sum, 0)
+  }
+  def sumsUpTo(node: Option[Node[Int]], sum: Int, current: Int): Boolean = {
+    if (node.isDefined) {
+      if (sumsUpTo(node.get.left, sum, current + node.get.data)) return true
+      if (sumsUpTo(node.get.right, sum, current + node.get.data)) return true
+      false
+    } else current == sum
+  }
+
+  private def balancedTree(weights: Seq[Int], index: Int): Option[Node[Int]] = {
 
     if (index >= weights.size) None
     else

@@ -8,7 +8,7 @@ class TreeSpec extends FunSpec with Matchers {
     it("Empty array") {
       val nodes = Seq.empty[Int]
 
-      val tree = Tree(nodes)
+      val tree = TreeInt(nodes)
       tree.root shouldBe None
 
       tree.isBalanced shouldBe true
@@ -17,7 +17,7 @@ class TreeSpec extends FunSpec with Matchers {
     it("Single Element") {
       val nodes = Seq(1)
 
-      val tree = Tree(nodes)
+      val tree = TreeInt(nodes)
       tree.root shouldBe Some(Node(1))
 
       tree.isBalanced shouldBe true
@@ -26,7 +26,7 @@ class TreeSpec extends FunSpec with Matchers {
     it("2 Elements") {
       val nodes = Seq(1, 2)
 
-      val tree = Tree(nodes)
+      val tree = TreeInt(nodes)
       tree.root shouldBe Some(Node(1, Some(Node(2))))
 
       tree.isBalanced shouldBe true
@@ -35,7 +35,7 @@ class TreeSpec extends FunSpec with Matchers {
     it("3 Elements") {
       val nodes = Seq(1, 2, 3)
 
-      val tree = Tree(nodes)
+      val tree = TreeInt(nodes)
       tree.root shouldBe Some(Node(1, Some(Node(2)), Some(Node(3))))
 
       tree.isBalanced shouldBe true
@@ -43,14 +43,14 @@ class TreeSpec extends FunSpec with Matchers {
     }
     it("Multi Elements") {
       val nodes = Seq(1, 2, 3, 4, 5, 6, 7, 8, 9)
-      val tree = Tree(nodes)
+      val tree = TreeInt(nodes)
       tree.preOrder()
       tree.inOrder()
       tree.postOrder()
 
       tree.isBalanced shouldBe true
       tree.size shouldBe nodes.size
-      tree.sumsUpTo(21) shouldBe false
+      TreeInt.sumsUpTo(21, tree.root) shouldBe false
     }
   }
   describe("Print Boundaries") {
