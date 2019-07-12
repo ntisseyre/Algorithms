@@ -1,6 +1,7 @@
 package com.supperslonic.algos.trees
 
-import com.supperslonic.algos.trees.Color.Color
+import com.supperslonic.algos.common.Color
+import com.supperslonic.algos.common.Color.Color
 import org.scalatest.{FunSpec, Matchers}
 
 import scala.collection.mutable

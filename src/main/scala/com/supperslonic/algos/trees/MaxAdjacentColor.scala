@@ -2,7 +2,7 @@ package com.supperslonic.algos.trees
 
 import java.util.UUID
 
-import com.supperslonic.algos.trees.Color.Color
+import com.supperslonic.algos.common.Color.Color
 
 import scala.collection.mutable
 
@@ -106,9 +106,4 @@ class MaxAdjacentColor() {
       case Right(maxColor) => maxColor.count
     }
   }
-}
-
-object Color extends Enumeration {
-  type Color = Value
-  val Red, Blue, Green, Yellow = Value
 }
