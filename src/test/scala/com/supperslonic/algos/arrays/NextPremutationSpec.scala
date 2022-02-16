@@ -39,7 +39,7 @@ class NextPremutationSpec extends FunSpec with Matchers {
       println(result)
       result shouldBe Seq(1, 3, 0, 2)
     }
-    it("534976 -> 536479"){
+    it("534976 -> 536479") {
       val elems = mutable.Seq(5, 3, 4, 9, 7, 6)
       val logic = new NextPremutation()
 
@@ -47,7 +47,7 @@ class NextPremutationSpec extends FunSpec with Matchers {
       println(result)
       result shouldBe Seq(5, 3, 6, 4, 7, 9)
     }
-    it("4321 -> 4321"){
+    it("4321 -> 4321") {
       val elems = mutable.Seq(4, 3, 2, 1)
       val logic = new NextPremutation()
 

@@ -5,6 +5,32 @@ import org.scalatest.{FunSpec, Matchers}
 class FindBoxInLimitedRoomsSpec extends FunSpec with Matchers {
   describe("Find all the boxes in the rooms with a limited number of rooms to visit") {
 
+    /*
+
+              Room1
+         /            \
+     Room2             Room3
+      /               /       \
+   Room4(box) ->  Room5(box)   Room6
+                                \
+                               Room7
+                            /   |    \
+                        Room8  Room9  Room10(box)
+
+
+    limit = 3
+   ------------------
+    Room1 -> Room2 -> Room4
+    Room1 -> Room3 -> Room5
+
+
+    limit = 4
+    ------------------
+    Room1 -> Room2 -> Room4
+    Room1 -> Room2 -> Room4 -> Room5
+    Room1 -> Room3 -> Room5
+    */
+
     it("No boxes") {
 
       val room1 = Vertex("Room 1")
